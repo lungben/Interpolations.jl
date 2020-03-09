@@ -45,7 +45,9 @@ end
     else
         axes(k1, 1) == ax1 || throw(DimensionMismatch("knot vectors must have the same axes as the corresponding dimension of the array"))
     end
-    degree(flag) isa Union{NoInterp,Constant,Linear} || error("only Linear, Constant, and NoInterp supported, got $flag")
+
+    # commented out to allow Quadratic / Cubic spline interpolation
+    # degree(flag) isa Union{NoInterp,Constant,Linear} || error("only Linear, Constant, and NoInterp supported, got $flag")
     length(k1) == 1 && error("dimensions of length 1 not yet supported")  # FIXME
     issorted(k1) || error("knot-vectors must be sorted in increasing order")
     check_gridded(getrest(itpflag), Base.tail(knots), Base.tail(axs))
