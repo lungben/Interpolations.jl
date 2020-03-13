@@ -23,6 +23,9 @@ using .Interpolations
     evenly_jl = itp_spline.(1:0.1:4)
     @test all(evenly_scipy .≈ evenly_jl)
 
+    gridded_linear = interpolate((x,), y, Gridded(Linear()))
+    @test gridded_linear(2) ≈ 1.25
+
     #=
     x = np.array([1, 3, 7, 14])
     y = np.array([1., 1.5, 1.3, 2.4])
